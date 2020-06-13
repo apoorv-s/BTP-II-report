@@ -52,7 +52,7 @@ The program primarily generated rectangular model and can generate several kind 
 \end{figure}
 
 \section{Model Details}
-The model works on energy minimization principles and can simulate all kind of strain fields and loading. The model uses L-BFGS-B optimization algorithm from scipy.optimize toolbox of Python. Broyden–Fletcher–Goldfarb–Shanno (BFGS) algorithm is an iterative method for solving unconstrained nonlinear optimization problems. L-BFGS-B is Limited memory-BFGS algorithm extended to handle simple box constraints (support conditions in our case). 
+The model works on energy minimization principles and can simulate all kind of strain fields and loading. The model uses L-BFGS-B optimization algorithm from scipy.optimize toolbox of Python. Broyden–Fletcher–Goldfarb–Shanno (BFGS) algorithm is an iterative method for solving unconstrained nonlinear optimization problems. L-BFGS-B is Limited memory-BFGS algorithm extended to handle simple box constraints (support conditions in our case). All the models and results presented in this study are for simple supported on all edges of plate condition. 
 
 Design variables are the coordinates of the nodes stacked together. These variable determine the length of the springs in any given state which in turn determines the energy of the system.
 
@@ -86,10 +86,10 @@ $T_i$: set of all springs connected to node $i$\\
 $f_{x_i}$, $f_{y_i}$, and $f_{z_i}$: force at node $i$ in $X-$, $Y-$, and $Z-$ directions respectively
 
 \section{Theory}
-The models are validated for point load at centre using Classical Plate Theory (CPT), also known as Kirchhoff-Love theory and First-order Shear deformation Theory (FSDT), also known as Mindlin–Reissner plate theory. A point load applied at the centre of the plate is used for the calibration and validation. More details about the models are in their respective sections.
+The models are validated for point load at centre using Classical Plate Theory (CPT), also known as Kirchhoff-Love theory and First-order Shear deformation Theory (FSDT), also known as Mindlin–Reissner plate theory. A point load applied at the centre of the plate is used for the calibration and validation. More details about the models are in their respective sections.\cite{reddy2006theory}\cite{timoshenko1959theory}
 
 \subsection{Classical Plate Theory}
-According to classical plate theory, displacement field is based on the following assumptions, called Kirchhoff hypothesis
+According to classical plate theory, displacement field is based on the following assumptions, called Kirchhoff hypothesis:
 \begin{enumerate}
     \item Straight line perpendicular to the mid-surface (i.e., transverse normals) before deformation remain straight after deformation.
     \item The transverse normals do not experience elongation (i.e., they are in inextensible).
@@ -125,7 +125,7 @@ where\\
     \label{eq:D}
 \end{equation}
 
-using Navier's solution for a point load of magnitude $Q_0$ applied at the centre of a square plate of dimension $a$, the analytical equation obtained for transverse displacement at centre using first ten element of the series is:
+using Navier's solution for a point load of magnitude $Q_0$ applied at the centre of a square plate simply supported on all four edges of dimension $a$, the analytical equation obtained for transverse displacement at centre using first ten element of the series is:
 \begin{equation}
     w_0(x_c, y_c) = 0.0116\frac{Q_0a^2}{D}
     \label{eq:w_CPT}
@@ -705,6 +705,7 @@ Based on the studies above, following conclusions can be drawn:
 \end{enumerate}
 
 \section{Limitations of Model and Suggested Improvements}
+\label{sec:Limitations}
 Following this study, few short comings of the models and possible ways to remedy the situation are pointed out in the following points.
 \begin{enumerate}
     \item We can the violation of the assumption $\epsilon_{zz} = 0$ for almost all the models. In some cases the vertical springs are crushed resulting in strains higher than 50\% and are source of errors and deviation from the analytical results. There are two ways in which this problem can be tackled:
